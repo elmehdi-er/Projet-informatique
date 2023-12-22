@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur PGFE</title>
+    <style>
+        .right {
+            float: right;
+            width: 60%; 
+            height: auto;
+        }
+        .left {
+            width: 40%;
+        }
+        .left p {
+            font-size: 70px;
+            font-size: 50px;
+            font-size: 20px; 
+        }
+        h1 {
+            color: #2A1B50; 
+        }
+        h2 {
+            color: #1146A2; 
+        }
+        #upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        #btn {
+            border: 2px solid #F77909; /* Bleu */
+            color: #fff; /* Bleu */
+            background-color: #F77909; /* Blanc */
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #upload-btn-wrapper input[type=file] {
+            
+            overflow: hidden;
+            display: inline-block;
+            margin-top: 20px; /* Espacement du haut pour le formulaire */
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <img class="right" src="https://www.celge.fr/wp-content/uploads/2022/08/Facture-Electronique.jpg" style="height: 715px;">
+    <div class="left">
+        <center>
+            <h2 style="font-size: 50px;"><strong>Bienvenue sur PGFE</strong></h2>
+        </center>
+        <br>
+        <br>
+        <h1 style="font-size: 70px;"><strong>Plateforme de <br> gestion des <br> factures électroniques</strong></h1>
+        
+    </div>
+    <a href="{% url 'login' %}" id="upload-btn-wrapper">
+        <button class="btn" id="btn">Se connecter</button>
+    </a>
+</body>
+</html>
+
+
+
+
+

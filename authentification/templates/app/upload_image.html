@@ -1,0 +1,205 @@
+{% extends 'base.html' %} {% block content %}
+<!-- process_image.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    {% load static %}
+    <link href="{% static 'app/css/styles.css' %}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Télécharger une image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 100% de la hauteur de la vue (viewport) */
+            margin: 0; /* Réinitialiser les marges par défaut du corps */
+            
+            background-color: #fff;
+            color: #fff;
+        }
+        h1 {
+            color: #001F3F; /* Bleu */
+        }
+        h2 {
+            color: #000; /* Bleu */
+        }
+        #upload-btn-wrapper {
+            
+            margin-left: 300px; 
+            margin-top: 50px;
+        }
+
+        #upload-btn-wrapper1 {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin-left: 70px; 
+            margin-top: 0px;
+        }
+    
+        #btn {
+            border: 2px solid #001F3F; /* Bleu */
+            color: #fff; /* Bleu */
+            background-color: #001F3F; /* Blanc */
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #upload-btn-wrapper input[type=file] {
+            
+            overflow: hidden;
+            display: inline-block;
+            margin-top: 20px; /* Espacement du haut pour le formulaire */
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        #se-connecter-btn-container {
+            margin-top: 20px;
+            background-color: #333; /* Couleur de fond du cadre */
+            padding: 20px; /* Espace à l'intérieur du cadre */
+            border-radius: 10px; /* Coins arrondis */
+        }
+
+        #se-connecter-btn {
+            display: block;
+            border: 2px solid #800080; /* Violet foncé */
+            color: #800080; /* Violet foncé */
+            background-color: #fff; /* Blanc */
+            padding: 15px 30px; /* Augmentation de la taille du bouton */
+            border-radius: 8px;
+            font-size: 24px; /* Augmentation de la taille du texte */
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none; /* Supprime le soulignement du lien */
+        }
+
+        .custom-file-upload {
+            border: 2px solid #001F3F; /* Couleur de la bordure */
+            color: #fff; /* Couleur du texte */
+            background-color: #001F3F; /* Couleur de fond */
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer; /* Change le curseur au survol pour indiquer qu'il est cliquable */
+        }
+    </style>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="{% url 'home' %}">Start Bootstrap</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Chercher pour..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    
+                    <li><a class="dropdown-item" href="#!">Journal d'activités</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="{% url 'welcome' %}">Se déconnecter</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">CŒUR</div>
+                        <a class="nav-link" href="{% url 'home' %}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        <a class="nav-link" href="{% url 'upload_image' %}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        Charger une facture
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Tables
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{% url 'tables' %}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    Liste des fournisseurs
+                                </a>
+                                <a class="nav-link" href="{% url 'tables2' %}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    Liste des produits
+                                </a>
+                                <a class="nav-link" href="{% url 'tables3' %}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    Liste des factures
+                                </a>
+                            </nav>
+                        </div>
+                        
+                        
+                        <div class="sb-sidenav-menu-heading">MODULES COMPLAIMENTAIRES</div>
+                        <a class="nav-link" href="{% url 'charts' %}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Statistiques
+                        </a>
+                        
+                    </div>
+                </div>
+                
+            </nav>
+        </div>
+        
+    
+
+            
+    </div>
+    <div id="upload-btn-wrapper">
+        <h2>Charger une facture</h2>
+        <form method="post" action="{% url 'upload_image' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Ajoutez une étiquette stylisée pour le bouton "Choose File" -->
+            <label for="id_image" class="custom-file-upload">
+                Choisir une photo
+            </label>
+            {{ form.image }}
+            
+            <!-- Bouton "Upload" pour soumettre le formulaire -->
+            <button type="submit">Charger</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="static/app/js/datatables-simple-demo.js"></script>
+</body>
+</html>
+
+{% endblock %}

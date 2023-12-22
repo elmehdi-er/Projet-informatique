@@ -1,0 +1,17 @@
+FACTURE N: 1
+
+Date: 13/11/2023
+
+Téléphone : 01 23 45 67 89
+Adresse : 12 rue de la Paix, 75000 Settat
+Nom: Groupe 1000
+
+Articles: quantités: prix unitaire: Total:
+Eau 19,00 30,00€ 395,00€
+Café 70,00 50,00€ 702,00€
+Huile 60,00 400,00€ 40,00€
+
+Total: 845,00€
+TVA: 10%
+
+TOTAL: 92900,50€

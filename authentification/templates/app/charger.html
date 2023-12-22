@@ -1,0 +1,88 @@
+<!-- process_image.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Télécharger une image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 100% de la hauteur de la vue (viewport) */
+            margin: 0; /* Réinitialiser les marges par défaut du corps */
+            
+            background-color: #fff;
+            color: #fff;
+        }
+        h1 {
+            color: #001F3F; /* Bleu */
+        }
+        h2 {
+            color: #000; /* Bleu */
+        }
+        #upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        #btn {
+            border: 2px solid #001F3F; /* Bleu */
+            color: #fff; /* Bleu */
+            background-color: #001F3F; /* Blanc */
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #upload-btn-wrapper input[type=file] {
+            
+            overflow: hidden;
+            display: inline-block;
+            margin-top: 20px; /* Espacement du haut pour le formulaire */
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        #se-connecter-btn-container {
+            margin-top: 20px;
+            background-color: #333; /* Couleur de fond du cadre */
+            padding: 20px; /* Espace à l'intérieur du cadre */
+            border-radius: 10px; /* Coins arrondis */
+        }
+
+        #se-connecter-btn {
+            display: block;
+            border: 2px solid #800080; /* Violet foncé */
+            color: #800080; /* Violet foncé */
+            background-color: #fff; /* Blanc */
+            padding: 15px 30px; /* Augmentation de la taille du bouton */
+            border-radius: 8px;
+            font-size: 24px; /* Augmentation de la taille du texte */
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none; /* Supprime le soulignement du lien */
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1>Charger votre facture</h1>
+    <h2>en format image</h2>
+    
+
+    <div id="upload-btn-wrapper">
+        <button class="btn" id="btn">Choisir une image</button>
+        <input type="file" name="image" id="id_image" accept="image/*" />
+    </div>
+
+    
+
+</body>
+</html>
